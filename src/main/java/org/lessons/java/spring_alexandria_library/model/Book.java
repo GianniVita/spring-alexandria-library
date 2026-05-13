@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "books")
 public class Book {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,7 +37,7 @@ public class Book {
     private String publisher;
 
     @Lob
-    private String synopis;
+    private String synopsis;
 
     @NotNull
     private LocalDate publicationDate;
@@ -45,7 +45,6 @@ public class Book {
     @NotNull
     @Min(value = 0, message = "the number of messages cannot be negative")
     private Integer numberOfCopies;
-
 
     public Integer getId() {
         return this.id;
@@ -87,12 +86,12 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public String getSynopis() {
-        return this.synopis;
+    public String getSynopsis() {
+        return this.synopsis;
     }
 
-    public void setSynopis(String synopis) {
-        this.synopis = synopis;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
     public LocalDate getPublicationDate() {
@@ -112,8 +111,8 @@ public class Book {
     }
 
     @Override
-    public String toString(){
-        return String.format("%s: %s, code: %s, published by: %s", this.author,this.title, this.isbn, this.publisher);
+    public String toString() {
+        return String.format("%s: %s, code: %s, published by: %s", this.author, this.title, this.isbn, this.publisher);
     }
 
 }
