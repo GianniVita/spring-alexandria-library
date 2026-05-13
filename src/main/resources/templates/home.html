@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('home')}"></nav>
+    <div class="container py-4">
+        <h1>Home</h1>
+        <hr />
+
+        <p>
+            Hidden in a small Italian village stands the “Alexander Library” — not a royal archive, but a personal
+            kingdom of
+            stories, ideas, recipes, dreams, and memories.
+            <br>
+
+            Built slowly through the years by me and my mother, every shelf holds a piece of our lives: books about
+            cooking, travel,
+            psychology, languages, cinema, family, and growth. Some are old and worn, others forgotten treasures waiting
+            to be opened again.
+            <br>
+            <br>
+
+            The library is part imagination, part reality — a place where curiosity lives quietly between the pages. A
+            small village
+            library with the spirit of something much bigger.
+
+        </p>
+
+
+
+
+    </div>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

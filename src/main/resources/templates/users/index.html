@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('users')}"></nav>
+    <div class="container py-4">
+        <h1>Users</h1>
+        <hr />
+
+        
+        <p class="text-muted mb-0">This is the users index page.</p>
+    </div>
+
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

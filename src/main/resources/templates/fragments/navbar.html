@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar(current)">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">Spec-Jva: Spring Alexandria</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${current == 'home'} ? ' active' : ''"th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${current == 'books'} ? ' active' : ''"th:href="@{/books}">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${current == 'users'} ? ' active' : ''"th:href="@{/users}">Users</a>
+                    </li>
+                </ul>
+
+                <a class="btn btn-primary" th:href="@{/books}">Open Books</a>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

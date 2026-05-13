@@ -111,5 +111,9 @@ public class Book {
         this.numberOfCopies = numberOfCopies;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s: %s, code: %s, published by: %s", this.author,this.title, this.isbn, this.publisher);
+    }
 
 }

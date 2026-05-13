@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Books</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('books')}"></nav>
+    <main class="container py-4">
+        <h1>Books</h1>
+        <hr />
+
+        <section class="row">
+            <div class="col-12">
+                <table class="table" th:if="${books.size() > 0}">
+                    <thead>
+                        <tr>
+                            <th>ISBN</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Date</th>
+                            <th>Copies</th>
+                            <!-- <th></th>
+                        <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="book : ${books}" th:object="${book}">
+                            <td>[[*{isbn}]]</td>
+                            <td>[[*{title}]]</td>
+                            <td>[[*{author}]]</td>
+                            <td>[[*{publisher}]]</td>
+                            <td>[[*{publicationDate}]]</td>
+                            <td>[[*{numberOfCopies}]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p th:text="No books available at the moment .... sorry" th:unless="${books.size() > 0}"></p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>
