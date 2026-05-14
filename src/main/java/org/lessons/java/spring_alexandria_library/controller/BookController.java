@@ -44,7 +44,7 @@ public class BookController {
 
     @GetMapping("/searchByTitleOrAuthor")
     public String searchByTitleOrAuthor(@RequestParam(name = "query") String query, Model model){
-        List<Book> books = repository.findByTitleContaningOrAuthorContaining(query, query);
+        List<Book> books = repository.findByTitleContainingOrAuthorContaining(query, query);
         model.addAttribute("books", books);
         return "books/index";
     } 

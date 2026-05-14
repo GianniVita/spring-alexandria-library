@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BookRepository extends JpaRepository<Book, Integer> {
     
     public List<Book> findByTitleContaining(String title);
-    public List<Book> findByTitleContaningOrAuthorContaining(String query, String author);
+    public List<Book> findByTitleContainingOrAuthorContaining(String query, String author);
 }
