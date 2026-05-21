@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+</head>
+
+<body>
+    <header>
+       <nav th:replace="~{fragments/navbar :: navbar('books')}"></nav>
+    </header>
+
+    <main class="container py-4">
+        <div class="row">
+            <div class="col-12">
+                <th:block>
+                    <h1 class="py-4 mb-2 text-center">
+                        Creating a new book
+
+                    </h1>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <h2>
+                                Form futuro
+                            </h2>
+                            <!-- Form -->
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </main>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>
+                
+               
+                
