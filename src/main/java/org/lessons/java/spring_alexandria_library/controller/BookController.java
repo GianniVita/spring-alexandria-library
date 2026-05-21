@@ -98,4 +98,13 @@ public class BookController {
         
         return "redirect:/books";
     }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        //TODO: process POST request
+        repository.deleteById(id);
+
+        return "redirect:/books";
+    }
+
 }
