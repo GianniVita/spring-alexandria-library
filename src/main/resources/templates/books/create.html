@@ -19,9 +19,43 @@
                     </h1>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <h2>
-                                Form futuro
-                            </h2>
+                            <form id="book-form" action="@{/book/create}" th:object="${book}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label" for="title">Title:</label>
+                                    <input class="form-control" type="text" id="title">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="title">Author:</label>
+                                    <input class="form-control" type="text" id="author">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="publication-date">Publication date:</label>
+                                    <input class="form-control" type="date" id="publication-date">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="isbn">ISBN code:</label>
+                                    <input class="form-control" type="number" id="isbn">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="publisher">Publisher:</label>
+                                    <input class="form-control" type="text" id="publisher">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label" for="synopsis">Book synopsis:</label>
+                                    <textarea id="synopsis" class="form-control"></textarea>
+                                </div>
+                               
+                                <div class="mb-3">
+                                    <label class="number-of-copies" for="number-of-copies">Number of copies</label>
+                                    <input class="form-control" type="number" min="0" id="number-of-copies">
+                                </div>
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <input type="submit" class="btn btn-primary" value="Create new Book">
+                                    <input type="reset" class="btn btn-warning" value="Reset all fields">
+                                </div>
+
+                            </form>
                             <!-- Form -->
                         </div>
                     </div>
