@@ -43,13 +43,17 @@
                             <td>[[*{publicationDate}]]</td>
                             <td>[[*{numberOfCopies}]]</td>
                             <td>
+                                <a th:href="@{/books/{id}/borrow(id=*{id})}" class="btn btn-sm btn-outline-success">
+                                    <i class="fa-solid fa-book-open"></i>Borrow
+                            </td>
+                            <td>
                                 <a th:href="@{/books/{id}(id=*{id})}" class="btn btn-sm btn-outline-primary">
-                                    <i class="fas fa-book"></i>
+                                    <i class="fas fa-book"></i>Details
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-outline-success btn-sm">
-                                    <i class="fa-regular fa-pen-to-square"></i>
+                                <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-outline-warning btn-sm">
+                                    <i class="fa-regular fa-pen-to-square"></i>Edit
                                 </a>
                             </td>
                             <td>
@@ -61,7 +65,7 @@
                                 <!-- bottone che fa partire la modale -->
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                                     th:data-bs-target="'#delete-modal-' + ${book.id}"><i
-                                        class="fa-solid fa-trash"></i></button>
+                                        class="fa-solid fa-trash"></i>Delete</button>
                                 <!-- ##B:Modale che appare solo dopo il click sul relativo bottone di Delete -->
                                 <div class="modal fade" th:id="'delete-modal-' + ${book.id}" tabindex="-1"
                                     aria-labelledby="delete-model" aria-hidden="true">

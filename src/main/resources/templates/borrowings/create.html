@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 
 <head>
-    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <th:block th:replace="~{fragments/resources :: headTags}"></th:block>
 </head>
 
 <body>
@@ -15,92 +15,58 @@
             <div class="col-12">
                 <th:block>
                     <h1 class="py-4 mb-2 text-center">
-                        Borrowing [[${borrowing.getBook().getTitle()}]]
+                        Borrowing the book: "[[${borrowing.book.title}]]"
+                        <br>
+                        by "[[${borrowing.book.author}]]"
                     </h1>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <!-- <form id="book-form" th:action="..." th:object="..." method="post">
+
+                            <form id="book-form" th:action="@{/borrowings/create}" th:object="${borrowing}"
+                                method="post">
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="title">Title:</label>
-                                    <input class="form-control" type="text" id="title" th:field="*{title}"
-                                        th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                                    <label class="form-label" for="borrowing-date">Borrowing date:</label>
+                                    <input class="form-control" type="date" id="borrowing-date"
+                                        th:field="*{borrowingDate}" th:errorClass="is-invalid">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('borrowingDate')}">
                                         <ul>
-                                            <li th:each="error : ${#fields.errors('title')}" th:text="${error}" />
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="title">Author:</label>
-                                    <input class="form-control" type="text" id="author" th:field="*{author}"
-                                        th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('author')}">
-                                        <ul>
-                                            <li th:each="error : ${#fields.errors('author')}" th:text="${error}" />
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="publication-date">Publication date:</label>
-                                    <input class="form-control" type="date" id="publication-date"
-                                        th:field="*{publicationDate}" th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('publicationDate')}">
-                                        <ul>
-                                            <li th:each="error : ${#fields.errors('publicationDate')}"
-                                                th:text="${error}" />
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="isbn">ISBN code:</label>
-                                    <input class="form-control" type="number" id="isbn" th:field="*{isbn}"
-                                        th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('isbn')}">
-                                        <ul>
-                                            <li th:each="error : ${#fields.errors('isbn')}" th:text="${error}" />
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="publisher">Publisher:</label>
-                                    <input class="form-control" type="text" id="publisher" th:field="*{publisher}"
-                                        th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('publisher')}">
-                                        <ul>
-                                            <li th:each="error : ${#fields.errors('publisher')}" th:text="${error}" />
+                                            <li th:each="error : ${#fields.errors('borrowingDate')}" th:text="${error}">
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="synopsis">Book synopsis:</label>
-                                    <textarea id="synopsis" class="form-control" th:field="*{synopsis}"
+                                    <label class="form-label" for="return-date">Return date:</label>
+                                    <input class="form-control" type="date" id="return-date" th:field="*{returnDate}"
+                                        th:errorClass="is-invalid">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('returnDate')}">
+                                        <ul>
+                                            <li th:each="error : ${#fields.errors('returnDate')}" th:text="${error}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="notes">Notes:</label>
+                                    <textarea id="notes" class="form-control" th:field="*{notes}"
                                         th:errorClass="is-invalid"></textarea>
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('synopsis')}">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('notes')}">
                                         <ul>
-                                            <li th:each="error : ${#fields.errors('synopsis')}" th:text="${error}" />
+                                            <li th:each="error : ${#fields.errors('notes')}" th:text="${error}"></li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="number-of-copies" for="number-of-copies">Number of copies</label>
-                                    <input class="form-control" type="number" min="0" id="number-of-copies"
-                                        th:field="*{numberOfCopies}" th:errorClass="is-invalid">
-                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('numberOfCopies')}">
-                                        <ul>
-                                            <li th:each="error : ${#fields.errors('numberOfCopies')}"
-                                                th:text="${error}" />
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div class="mb-3 d-flex justify-content-between">
-                                    <input type="submit" class="btn btn-primary" value="Create new Book">
+                                    <input type="submit" class="btn btn-primary" value="Create Borrowing">
                                     <input type="reset" class="btn btn-warning" value="Reset all fields">
                                 </div>
 
-                            </form> -->
+                            </form>
                         </div>
                     </div>
                 </th:block>
