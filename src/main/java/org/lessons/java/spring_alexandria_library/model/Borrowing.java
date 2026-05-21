@@ -37,3 +37,43 @@ public class Borrowing {
     @Lob
     private String notes;
 }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Book getBook() {
+        return this.book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public LocalDate getBorrowingDate() {
+        return this.borrowingDate;
+    }
+
+    public void setBorrowingDate(LocalDate borrowingDate) {
+        this.borrowingDate = borrowingDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return this.returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getNotes() {
+        return this.notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
