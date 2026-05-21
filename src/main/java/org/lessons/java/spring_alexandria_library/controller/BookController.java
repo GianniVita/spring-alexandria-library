@@ -2,6 +2,8 @@ package org.lessons.java.spring_alexandria_library.controller;
 
 import java.util.List;
 
+import javax.naming.Binding;
+
 import org.lessons.java.spring_alexandria_library.model.Book;
 import org.lessons.java.spring_alexandria_library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/books")
@@ -74,5 +78,24 @@ public class BookController {
         }
 
     }
-}
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("book", repository.findById(id).get());
+
+        return "/books/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String update(@Valid @ModelAttribute("book") Book formBook,
+    BindingResult bindingResult,
+    Model model) {
+        if(bindingResult.hasErrors()) {
+            return "/books/edit";
+        }
+        // aggiornamento del dato
+        repository.save(formBook);
+        
+        return "redirect:/books";
+    }
+}
