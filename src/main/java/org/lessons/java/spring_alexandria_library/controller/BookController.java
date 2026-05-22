@@ -7,6 +7,7 @@ import java.util.List;
 import org.lessons.java.spring_alexandria_library.model.Book;
 import org.lessons.java.spring_alexandria_library.model.Borrowing;
 import org.lessons.java.spring_alexandria_library.repository.BookRepository;
+import org.lessons.java.spring_alexandria_library.repository.BorrowingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ public class BookController {
 
     @Autowired
     private BookRepository repository;
+
+    @Autowired
+    private BorrowingRepository borrowingRepository;
 
     @GetMapping
     public String index(Model model) {
@@ -94,7 +98,7 @@ public class BookController {
         if(bindingResult.hasErrors()) {
             return "/books/edit";
         }
-        // aggiornamento del dato
+        //aggiornamento del dato
         repository.save(formBook);
         
         return "redirect:/books";
@@ -102,11 +106,22 @@ public class BookController {
 
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
-        //TODO: process POST request
-        repository.deleteById(id);
+        // ?prendere per ogni libro i prestiti che sono ad esso connessi -> getBorrowings()
+        // !eliminali dalla tabella borrowings borrowingRepository.delete(borrowing)
+        // % a questo punto non ho piu legami con borrowings (vincoli di chiave esterna su book_id) cioe nella colonna *book_id* della tabella borrowings
+        
+        Book book = repository.findById(id).get();
 
+        // for (Borrowing borrowingToDelete : book.getBorrowings()) {
+        //     borrowingRepository.delete(borrowingToDelete);
+            
+        // }
+        
+        repository.deleteById(id);
         return "redirect:/books";
     }
+        
+
     @GetMapping("/{id}/borrow") //mia-app.com/books/20/borrow
         public String borrow(@PathVariable Integer id, Model model){
             Borrowing borrowing = new Borrowing();

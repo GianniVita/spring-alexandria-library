@@ -3,6 +3,7 @@ package org.lessons.java.spring_alexandria_library.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,9 +49,12 @@ public class Book {
     @Min(value = 0, message = "the number of messages cannot be negative")
     private Integer numberOfCopies;
 
-    // aggiunta di una relazione tra UN LIBRO e 0,1 o più prestiti
-    @OneToMany(mappedBy = "book")
+    //? aggiunta di una relazione tra UN LIBRO e 0,1 o più prestiti
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE})
     private List<Borrowing> borrowings;
+
+
+
 
     public Integer getId() {
         return this.id;
