@@ -24,7 +24,9 @@
                 <p th:text="*{synopsis}"></p>
             </div>
         </section>
+        
         <section class="row mb-3 borrowings">
+
             <div class="col-12" th:unless="${book.getBorrowings().size() > 0}">
                 <div class="alert alert-warning">
                     <h4>
@@ -39,14 +41,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ISBN</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Date</th>
-                            <th>Copies</th>
-                            <th></th>
-                            <th></th>
+                            <th>ID</th>
+                            <th>Borrowing Date</th>
+                            <th>Return Date</th>
+                            <th>Notes</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -54,23 +52,25 @@
                         <tr th:each="borrowing : *{borrowings}">
                             <td>[[${borrowing.id}]]</td>
                             <td>[[${borrowing.borrowingDate}]]</td>
-                            <td>[[${borrowing.returnDate}]]</td>
+                            <td th:if="${borrowing.returnDate} != null">[[${borrowing.returnDate}]]</td>
+                            <td th:unless="${borrowing.returnDate} != null">Not returned yet!</td>
                             <td>[[${borrowing.notes}]]</td>
+                            <td>
+                                <a th:href="@{/borrowings/edit/{id}(id=${borrowing.id})}" class="btn btn-outline-warning btn-sm">
+                                    <i class="fa-regular fa-pen-to-square"></i>Update
+                                </a>
+                            </td> 
                             
                             <!-- <td>
                                 <a th:href="@{/books/{id}/borrow(id=*{id})}" class="btn btn-sm btn-outline-success">
                                     <i class="fa-solid fa-book-open"></i>Borrow
-                            </td> -->
+                            </td>  -->
                             <!-- <td>
                                 <a th:href="@{/books/{id}(id=*{id})}" class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-book"></i>Details
                                 </a>
                             </td> -->
-                            <!-- <td>
-                                <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-outline-warning btn-sm">
-                                    <i class="fa-regular fa-pen-to-square"></i>Edit
-                                </a>
-                            </td> -->
+                           
                             <!-- <td>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                                     th:data-bs-target="'#delete-modal-' + ${book.id}"><i class="fa-solid fa-trash"></i>Delete</button>

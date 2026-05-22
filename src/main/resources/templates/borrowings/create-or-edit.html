@@ -21,9 +21,7 @@
                     </h1>
                     <div class="row justify-content-center">
                         <div class="col-8">
-
-                            <form id="book-form" th:action="@{/borrowings/create}" th:object="${borrowing}"
-                                method="post">
+                            <form id="book-form"th:object="${borrowing}" th:action="${edit} ? @{/borrowings/edit/{id}(id=${borrowing.id})} : @{/borrowings/create}" method="post">
 
                                 <input type="hidden" th:field="*{book}" id="linked-book">
 
@@ -64,7 +62,7 @@
                                 </div>
 
                                 <div class="mb-3 d-flex justify-content-between">
-                                    <input type="submit" class="btn btn-outline-primary" value="Create Borrowing">
+                                    <input type="submit" class="btn btn-outline-primary" value="Save">
                                     <input type="reset" class="btn btn-outline-warning" value="Reset all fields">
                                 </div>
 

@@ -116,6 +116,14 @@ public class Book {
         this.numberOfCopies = numberOfCopies;
     }
 
+    public List<Borrowing> getBorrowings() {
+        return this.borrowings;
+    }
+
+    public void setBorrowings(List<Borrowing> borrowings) {
+        this.borrowings = borrowings;
+    }
+
     @Override
     public String toString() {
         return String.format("%s: %s, code: %s, published by: %s", this.author, this.title, this.isbn, this.publisher);
